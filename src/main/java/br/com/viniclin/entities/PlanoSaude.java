@@ -1,5 +1,8 @@
 package br.com.viniclin.entities;
 
-public enum PlanoSaude {
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
+public enum PlanoSaude {
+	UNIMED, SULAMERICA, SANTACASA, PAGAMENTOAVISTA
 }

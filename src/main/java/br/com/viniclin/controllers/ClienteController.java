@@ -18,4 +18,5 @@ public String carregarPaginaCadastro() {
 public String cadastrarCliente(@RequestBody Cliente cliente) {
 	return "";
 }
+
 }

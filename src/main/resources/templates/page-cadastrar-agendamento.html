@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Agendamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input, select, button {
+            margin-top: 5px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Agendamento</h1>
+        <form action="#" method="post">
+            <label for="idAgendamento">ID do Agendamento:</label>
+            <input type="text" id="idAgendamento" name="idAgendamento" placeholder="Digite o ID do agendamento" required>
+
+            <label for="idEspecialista">ID do Especialista:</label>
+            <input type="text" id="idEspecialista" name="idEspecialista" placeholder="Digite o ID do especialista" required>
+
+            <label for="idProcedimento">ID do Procedimento:</label>
+            <input type="text" id="idProcedimento" name="idProcedimento" placeholder="Digite o ID do procedimento" required>
+
+            <label for="idCliente">ID do Cliente:</label>
+            <input type="text" id="idCliente" name="idCliente" placeholder="Digite o ID do cliente" required>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required>
+
+            <label for="horario">Horário:</label>
+            <input type="time" id="horario" name="horario" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

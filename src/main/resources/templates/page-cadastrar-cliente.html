@@ -52,7 +52,7 @@
 <body>
     <div class="container">
         <h1>Cadastro de Cliente</h1>
-        <form action="#" method="post">
+        <form action="/cadastrar-cliente" method="post"> <!-- ACTION SERVE P DEFINIR A ROTA EM QUE O FORMULARIO SERA ENVIADO -->
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required>
 
@@ -68,12 +68,13 @@
             <label for="endereco">Endereço:</label>
             <input type="text" id="endereco" name="endereco" placeholder="Digite o endereço" required>
 
-            <label for="planoDeSaude">Plano de Saúde:</label>
-            <select id="planoDeSaude" name="planoDeSaude" required>
+            <label for="planoSaude">Plano de Saúde:</label>
+            <select id="planoSaude" name="planoSaude" required>
                 <option value="">Selecione um plano</option>
-                <option value="basico">Básico</option>
-                <option value="intermediario">Intermediário</option>
-                <option value="avancado">Avançado</option>
+                <option value="UNIMED">UNIMED</option>
+                <option value="SULAMERICA">SULAMERICA</option>
+                <option value="SANTA_CASA">SANTA CASA</option>
+                  <option value="PAGAMENTO_A_VISTA">PAGAMENTO A VISTA</option>
             </select>
 
             <button type="submit">Cadastrar</button>

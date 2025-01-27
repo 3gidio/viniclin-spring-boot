@@ -18,7 +18,9 @@ public class ClienteServiceImpl implements ClienteService { //No Service serao d
 				&& cliente.getCpf() != 0 && cliente.getPlanoSaude() != null) {
 		clienteRepository.insert(cliente);
 		}
-		
+		else {
+			throw new RuntimeException("Preencha os campos e tente novamente!"); 
+		}
 	}
 	
 }

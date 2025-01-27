@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+
+   	<meta charset="UTF-8">
+   	
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Cliente</title>
     <style>
@@ -49,7 +51,20 @@
         }
     </style>
 </head>
+
 <body>
+	<div th:if = "${sucesso} "> 
+	<p th:text="${sucesso}">
+	
+	</p>
+	
+	</div>
+	<div th:if = "${erro} ">
+	<p th:text="${erro}">
+	
+	</p>
+	
+	</div>
     <div class="container">
         <h1>Cadastro de Cliente</h1>
         <form action="/cadastrar-cliente" method="post"> <!-- ACTION SERVE P DEFINIR A ROTA EM QUE O FORMULARIO SERA ENVIADO -->

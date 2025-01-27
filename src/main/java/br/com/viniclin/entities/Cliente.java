@@ -12,7 +12,17 @@ public class Cliente {
 	private long cpf;
 	private String email;
 	private String endereco;
-	private PlanoSaude planoSaude;
+	private String planoSaude;
+	
+	
+
+	public String getPlanoSaude() {
+		return planoSaude;
+	}
+
+	public void setPlanoSaude(String planoSaude) {
+		this.planoSaude = planoSaude;
+	}
 
 	public String getIdCliente() {
 		return idCliente;
@@ -46,13 +56,7 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
-	public PlanoSaude getPlanoSaude() {
-		return planoSaude;
-	}
-
-	public void setPlanoSaude(PlanoSaude planoSaude) {
-		this.planoSaude = planoSaude;
-	}
+	
 
 	public String getNome() {
 		return nome;

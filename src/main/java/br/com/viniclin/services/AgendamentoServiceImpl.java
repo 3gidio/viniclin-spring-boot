@@ -9,7 +9,7 @@ import br.com.viniclin.repositories.AgendamentoRepository;
 @Service
 public class AgendamentoServiceImpl implements AgendamentoService {
 	@Autowired
-	AgendamentoRepository agendamentoRepository;
+	private AgendamentoRepository agendamentoRepository;
 	
 	@Override
 	public void cadastrar (Agendamento agendamento) {

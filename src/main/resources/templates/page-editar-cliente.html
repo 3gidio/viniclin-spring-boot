@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edição de Cliente</title>
+    <script>
+        // Exibe um pop-up se houver erro no backend
+        function verificarErro() {
+            var erroMsg = document.getElementById("erro").value;
+            if (erroMsg) {
+                alert("Erro: " + erroMsg);
+            }
+        }
+    </script>
+</head>
+<body onload="verificarErro()">
+    <!-- Campo oculto para erro -->
+    <input type="hidden" id="erro" th:value="${erro}" />
+
+    <h2>Editar Cliente</h2>
+    <form action="/editar-cliente" method="post">
+        <!-- Campo oculto para ID do cliente -->
+        <input type="hidden" name="idCliente" th:value="${cliente.idCliente}" />
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" th:value="${cliente.nome}" required><br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" th:value="${cliente.telefone}" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="${cliente.email}" required><br><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" th:value="${cliente.endereco}" required><br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" th:value="${cliente.cpf}" required><br><br>
+
+        <label for="plano">Plano de Saúde:</label>
+        <select id="plano" name="planoSaude" required>
+            <option value="UNIMED" th:selected="${cliente.planoSaude == 'UNIMED'}">Unimed</option>
+            <option value="SULAMERICA" th:selected="${cliente.planoSaude == 'SULAMERICA'}">Sulamérica</option>
+            <option value="SANTA_CASA" th:selected="${cliente.planoSaude == 'SANTA_CASA'}">Santa Casa</option>
+            <option value="PAGAMENTO_A_VISTA" th:selected="${cliente.planoSaude == 'PAGAMENTO_A_VISTA'}">Pagamento à Vista</option>
+        </select><br><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

@@ -14,7 +14,7 @@ public class AgendamentoController {
 		return "page-cadastrar-agendamento";
 	}
 @PostMapping(value = "/cadastrar-agendamento")
-public String cadastrarAgendamento(@RequestBody Agendamento agendamento) {
+public String cadastrarAgendamento( Agendamento agendamento) {
 	return "" ;
 }
 

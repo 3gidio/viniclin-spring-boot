@@ -1,5 +1,7 @@
 package br.com.viniclin.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,24 @@ public class EspecialistaServiceImpl implements EspecialistaService {
 				&& especialista.getTelefone() != null ) {
 			especialistaRepository.insert(especialista);
 		}
+	}
+
+	@Override
+	public List<Especialista> getAll() {
+	
+		return null;
+	}
+
+	@Override
+	public Especialista getById(String idEspecialista) {
+		
+		return null;
+	}
+
+	@Override
+	public void editar(Especialista especialista) {
+		
+		
 	}
 
 }

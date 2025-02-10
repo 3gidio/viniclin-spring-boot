@@ -16,7 +16,7 @@ public class ProcedimentoController {
 	
 
 	@PostMapping (value = "/cadastrar-procedimento")
-public String cadastrarProcedimento(@RequestBody Procedimento procedimento) {
+public String cadastrarProcedimento( Procedimento procedimento) {
 	return "";
 }
 

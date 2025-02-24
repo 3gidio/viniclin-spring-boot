@@ -16,4 +16,8 @@ public interface EspecialistaService {
 
 	public void editar(Especialista especialista);
 
+	public void apagar(String idEspecialista);
+
+	public List<Especialista> findAllByNomeEspecialista (String nomeEspecialista);
+
 }

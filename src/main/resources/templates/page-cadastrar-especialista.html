@@ -52,9 +52,9 @@
 <body>
     <div class="container">
         <h1>Cadastro de Especialistas</h1>
-        <form action="#" method="post">
+        <form action="cadastrar-especialista" method="post">
             <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" required>
+            <input type="text" id="nome" name="nomeEspecialista" placeholder="Digite o nome completo" required>
 
             <label for="telefone">Telefone:</label>
             <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxx-xxxx" required>
@@ -63,13 +63,7 @@
             <input type="text" id="especialidade" name="especialidade" placeholder="Digite a especialidade" required>
 
             <label for="tipoRegistro">Tipo de Registro:</label>
-            <select id="tipoRegistro" name="tipoRegistro" required>
-                <option value="">Selecione o tipo de registro</option>
-                <option value="crm">CRM</option>
-                <option value="cro">CRO</option>
-                <option value="crefito">CREFITO</option>
-                <option value="outro">Outro</option>
-            </select>
+           <input type="text" id="tipo-registro" name="tipoRegistro" placeholder="Digite o tipo do Registro" required>
 
             <label for="numeroRegistro">Número do Registro:</label>
             <input type="text" id="numeroRegistro" name="numeroRegistro" placeholder="Digite o número do registro" required>

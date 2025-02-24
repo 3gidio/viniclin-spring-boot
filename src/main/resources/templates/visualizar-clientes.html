@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<script src="https://unpkg.com/@phosphor-icons/web@2.1.1">
-	
-</script>
-<script src="/js/script.js">
-	
-</script>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script src="/js/script.js"></script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,15 +57,25 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+<div id="container-erro"
+	th:if="${atencao}">
+	<p th:text="${atencao}"></p>
+	</div>
+	
 	<div id="confirmacao-excluir-container"
 		th:if="${confirmacaoExcluir != null}">
 		<div class="alert alert-danger alert-dismissible fade show"
 			role="alert">
 			<div th:text="${confirmacaoExcluir}"></div>
-			<button type="button" id="btnConfirmar" class="btn btn-danger btn-sim">Sim</button>
-			<a class="btn btn-secondary" href="@{/visualizar-clientes}">Não</a>
+			<button type="button" onclick="confirmarExclusao()"
+				class="btn btn-danger btn-sim">Sim</button>
+			<a class="btn btn-secondary" th:href="@{/visualizar-clientes}">Não</a>
 		</div>
 	</div>
+	<form id="form-excluir" action="apagar-cliente" method="post" hidden >
+		<input name="idCliente" th:value="${idClienteExcluir}">
+	</form>
+
 	<h2>Lista de Clientes</h2>
 
 	<table>
@@ -95,8 +101,8 @@ tr:nth-child(even) {
 				<td><a
 					th:href="@{'/editar-cliente?idCliente='+${cliente.idCliente}}">
 						<i class="ph ph-pencil"></i>
-				</a> <a th:href="@{'/apagar-cliente?idCliente='+${cliente.idCliente}}" th:data-id="${cliente.idCliente}" class="btn-apagar">
-						<i class="ph ph-trash"></i>
+				</a> <a th:href="@{'/apagar-cliente?idCliente='+${cliente.idCliente}}"
+					class="btn-apagar"> <i class="ph ph-trash"></i>
 				</a></td>
 			</tr>
 

@@ -52,12 +52,19 @@
 <body>
     <div class="container">
         <h1>Cadastro de Agendamento</h1>
-        <form action="#" method="post">
-            <label for="idAgendamento">ID do Agendamento:</label>
-            <input type="text" id="idAgendamento" name="idAgendamento" placeholder="Digite o ID do agendamento" required>
-
-            <label for="idEspecialista">ID do Especialista:</label>
-            <input type="text" id="idEspecialista" name="idEspecialista" placeholder="Digite o ID do especialista" required>
+        <form action="cadastrar-agendamento" method="post">
+		<form action="procurar-especialista-pelo-nome" method= "get">
+		<input type = "text" name= "nomeEspecialista" placeholder= "Digite o nome do Especialista">
+		<button type = "submit">Procurar Especialista
+		</button>
+		</form>
+            <label for="especialista">Especialista:</label>
+          
+            <select id="especialista" name="especialista" required>
+                <option value="">Selecione um Especialista</option>
+                <option th:each="especialista : ${especialistas}" th:value="${especialista}" th:text="${especialista.nomeEspecialista}"></option>
+               </option>
+            </select>
 
             <label for="idProcedimento">ID do Procedimento:</label>
             <input type="text" id="idProcedimento" name="idProcedimento" placeholder="Digite o ID do procedimento" required>

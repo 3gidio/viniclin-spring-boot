@@ -10,9 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Agendamento {
 	@Id
 	private String idAgendamento;
-	private String idEspecialista;
-	private String idProcedimento;
-	private String idCliente;
+	private Especialista especialista;
+	private Procedimento procedimento;
+	private Cliente cliente;
 	private LocalDate data;
 	private LocalTime horario;
 	public String getIdAgendamento() {
@@ -21,23 +21,23 @@ public class Agendamento {
 	public void setIdAgendamento(String idAgendamento) {
 		this.idAgendamento = idAgendamento;
 	}
-	public String getIdEspecialista() {
-		return idEspecialista;
+	public Especialista getEspecialista() {
+		return especialista;
 	}
-	public void setIdEspecialista(String idEspecialista) {
-		this.idEspecialista = idEspecialista;
+	public void setEspecialista(Especialista especialista) {
+		this.especialista = especialista;
 	}
-	public String getIdProcedimento() {
-		return idProcedimento;
+	public Procedimento getProcedimento() {
+		return procedimento;
 	}
-	public void setIdProcedimento(String idProcedimento) {
-		this.idProcedimento = idProcedimento;
+	public void setProcedimento(Procedimento procedimento) {
+		this.procedimento = procedimento;
 	}
-	public String getIdCliente() {
-		return idCliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
-	public void setIdCliente(String idCliente) {
-		this.idCliente = idCliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	public LocalDate getData() {
 		return data;
@@ -51,7 +51,5 @@ public class Agendamento {
 	public void setHorario(LocalTime horario) {
 		this.horario = horario;
 	}
-	
-	
-	
+
 }

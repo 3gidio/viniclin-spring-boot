@@ -67,10 +67,11 @@ public class ClienteController {
 	}
 
 	@GetMapping(value = "/apagar-cliente")
-	public String carregarApagarCliente(String id, Model model) {
+	public String carregarApagarCliente(@RequestParam String idCliente, Model model) {
 		model.addAttribute("confirmacaoExcluir", "Deseja mesmo Excluir esse Cliente?");
 		List<Cliente> clientes = clienteService.getAll();
 		model.addAttribute("clientes", clientes);
+		model.addAttribute("idClienteExcluir", idCliente);
 		return "visualizar-clientes";
 	}
 
@@ -78,10 +79,10 @@ public class ClienteController {
 	public String apagarCliente(String idCliente, Model model) {
 		try {
 			clienteService.apagar(idCliente);
-			model.addAttribute("sucesso", "CLiente Excluido com Sucesso!");
+			model.addAttribute("atencao", "CLiente Excluido com Sucesso!");
 
 		} catch (RuntimeException ex) {
-			model.addAttribute("erro", ex.getLocalizedMessage());
+			model.addAttribute("atencao", ex.getLocalizedMessage());
 
 		}
 		List<Cliente> clientes = clienteService.getAll();

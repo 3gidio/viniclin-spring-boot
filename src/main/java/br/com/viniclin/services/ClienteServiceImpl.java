@@ -49,7 +49,14 @@ public class ClienteServiceImpl implements ClienteService { // No Service serao 
 
 	@Override
 	public void apagar(String idCliente) {
-		clienteRepository.deleteById(idCliente);
+		
+		Cliente cliente = clienteRepository.findById(idCliente).orElse(null);
+		if (cliente != null) {
+			clienteRepository.deleteById(idCliente);
+		} else {
+			throw new RuntimeException("Cliente nao encontrado");
+		}
+		
 		
 	}
 

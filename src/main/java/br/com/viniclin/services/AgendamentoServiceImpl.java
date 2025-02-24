@@ -14,8 +14,8 @@ public class AgendamentoServiceImpl implements AgendamentoService {
 	@Override
 	public void cadastrar (Agendamento agendamento) {
 		if (agendamento.getData() != null && agendamento.getHorario() != null 
-			&& agendamento.getIdCliente() != null && agendamento.getIdEspecialista() != null
-			&& agendamento.getIdProcedimento() != null ) {
+			&& agendamento.getCliente() != null && agendamento.getEspecialista() != null
+			&& agendamento.getProcedimento() != null ) {
 			agendamentoRepository.insert(agendamento);
 		}
 		

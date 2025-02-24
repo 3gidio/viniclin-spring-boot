@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.viniclin.entities.Cliente;
 import br.com.viniclin.entities.Especialista;
 import br.com.viniclin.services.EspecialistaService;
 
@@ -33,7 +34,7 @@ public class EspecialistaController {
 			model.addAttribute("erro", ex.getLocalizedMessage());
 		}
 
-		return "page-cadastrar-especialista ";
+		return "page-cadastrar-especialista";
 	}
 
 	@GetMapping(value = "/visualizar-especialista")
@@ -52,9 +53,10 @@ public class EspecialistaController {
 		return "page-editar-especialista";
 
 	}
+
 	@PostMapping(value = "/editar-especialista")
 	public String editarEspecialista(Especialista especialista, Model model) {
-		try { 
+		try {
 			especialistaService.editar(especialista);
 			model.addAttribute("sucesso", "Especialista editado com sucesso");
 		} catch (RuntimeException ex) {
@@ -64,6 +66,29 @@ public class EspecialistaController {
 		model.addAttribute("especialistas", especialista);
 		return "visualizar-especialistas";
 	}
-	
+
+	@GetMapping(value = "/apagar-especialista")
+	public String carregarApagarEspecialista(@RequestParam String idEspecialista, Model model) {
+		model.addAttribute("confirmacaoExcluir", "Deseja mesmo Excluir esse Especialista?");
+		List<Especialista> especialistas = especialistaService.getAll();
+		model.addAttribute("especialistas", especialistas);
+		model.addAttribute("idEspecialistaExcluir", idEspecialista);
+		return "visualizar-especialista";
+	}
+
+	@PostMapping(value = "/apagar-especialista")
+	public String apagarEspecialista(String idEspecialista, Model model) {
+		try {
+			especialistaService.apagar(idEspecialista);
+			model.addAttribute("atencao", "Especialista Excluido com Sucesso!");
+
+		} catch (RuntimeException ex) {
+			model.addAttribute("atencao", ex.getLocalizedMessage());
+
+		}
+		List<Especialista> especialistas = especialistaService.getAll();
+		model.addAttribute("especialistas", especialistas);
+		return "visualizar-especialistas";
+	}
 
 }

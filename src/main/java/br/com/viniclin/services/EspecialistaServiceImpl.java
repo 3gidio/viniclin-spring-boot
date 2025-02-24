@@ -24,20 +24,43 @@ public class EspecialistaServiceImpl implements EspecialistaService {
 
 	@Override
 	public List<Especialista> getAll() {
-	
-		return null;
+		List<Especialista> especialistas = especialistaRepository.findAll();
+		return especialistas;
 	}
 
 	@Override
 	public Especialista getById(String idEspecialista) {
-		
-		return null;
+		Especialista especialista = especialistaRepository.findById(idEspecialista).orElse(null);
+		return especialista;
 	}
 
 	@Override
 	public void editar(Especialista especialista) {
+		if (especialista.getNomeEspecialista() != null && especialista.getTelefone() != null &&
+				especialista.getEspecialidade() != null && especialista.getTipoRegistro() != null &&
+				especialista.getNumeroRegistro() != null) {
+			especialistaRepository.save(especialista);
+		} else {
+			throw new RuntimeException("Preencha os campos e tente novamente");
+		}
 		
+	}
+
+	@Override
+	public void apagar(String idEspecialista) {
+		Especialista especialista = especialistaRepository.findById(idEspecialista).orElse(null);
+		if (especialista != null) {
+			especialistaRepository.deleteById(idEspecialista);
+		} else {
+			throw new RuntimeException("Especialista nao encontrado!");
+		}
 		
+	}
+
+	@Override
+	public List<Especialista> findAllByNomeEspecialista(String nomeEspecialista) {
+		List<Especialista> especialistas = especialistaRepository.findAllByNomeEspecialista(nomeEspecialista);
+		return especialistas;
 	}
 
 }

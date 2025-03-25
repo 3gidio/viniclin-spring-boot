@@ -17,6 +17,8 @@ public interface ClienteService {
 	public Cliente getById(String idCliente);
 
 	public void apagar(String idCliente);
+
+	public List<Cliente> findAllByNome(String nome);
 	
 	
 	

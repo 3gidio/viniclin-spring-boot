@@ -52,26 +52,35 @@
 <body>
     <div class="container">
         <h1>Cadastro de Agendamento</h1>
-        <form action="cadastrar-agendamento" method="post">
-		<form action="procurar-especialista-pelo-nome" method= "get">
-		<input type = "text" name= "nomeEspecialista" placeholder= "Digite o nome do Especialista">
-		<button type = "submit">Procurar Especialista
+        <form action="cadastrar-agendamento" method= "get">
+		<input type = "text" name= "nome" placeholder= "Digite o nome do Cliente">
+		<button type = "submit">Procurar Cliente
 		</button>
 		</form>
+        <form action="cadastrar-agendamento" method="post">
+        
+         <label for="cliente">Cliente:</label>
+            <select id="cliente" name="cliente" required>
+                <option value="">Selecione um Cliente</option>
+                <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nome} + ' - '+ ${cliente.planoSaude}">
+               </option>
+            </select>
+		
             <label for="especialista">Especialista:</label>
           
             <select id="especialista" name="especialista" required>
                 <option value="">Selecione um Especialista</option>
-                <option th:each="especialista : ${especialistas}" th:value="${especialista}" th:text="${especialista.nomeEspecialista}"></option>
+                <option th:each="especialista : ${especialistas}" th:value="${especialista.idEspecialista}" th:text="${especialista.nomeEspecialista} + ' - '+ ${especialista.especialidade}">
                </option>
             </select>
-
-            <label for="idProcedimento">ID do Procedimento:</label>
-            <input type="text" id="idProcedimento" name="idProcedimento" placeholder="Digite o ID do procedimento" required>
-
-            <label for="idCliente">ID do Cliente:</label>
-            <input type="text" id="idCliente" name="idCliente" placeholder="Digite o ID do cliente" required>
-
+            
+            <label for="procedimentio">Procedimento:</label>
+			<select id="procedimento" name="procedimento" required>
+                <option value="">Selecione um Procedimento</option>
+                <option th:each="procedimento : ${procedimentos}" th:value="${procedimento.idProcedimento}" th:text="${procedimento.nomeProcedimento} + ' - '+ ${procedimento.valor}">
+               </option>
+            </select>
+           
             <label for="data">Data:</label>
             <input type="date" id="data" name="data" required>
 

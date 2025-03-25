@@ -60,4 +60,10 @@ public class ClienteServiceImpl implements ClienteService { // No Service serao 
 		
 	}
 
+	@Override
+	public List<Cliente> findAllByNome(String nome) {
+		List<Cliente> clientes = clienteRepository.findAllByNome(nome);
+		return clientes;
+	}
+
 }

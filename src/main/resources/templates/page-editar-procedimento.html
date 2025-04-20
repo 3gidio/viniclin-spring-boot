@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Procedimento</title>
+    <script>
+        // Exibe um pop-up se houver erro no backend
+        function verificarErro() {
+            var erroMsg = document.getElementById("erro").value;
+            if (erroMsg) {
+                alert("Erro: " + erroMsg);
+            }
+        }
+    </script>
+</head>
+<body onload="verificarErro()">
+    <!-- Campo oculto para erro -->
+    <input type="hidden" id="erro" th:value="${erro}" />
+
+    <h2>Editar Procedimento</h2>
+    <form action="/editar-procedimento" method="post">
+        <!-- Campo oculto para ID do cliente -->
+        <input type="hidden" name="idProcedimento" th:value="${procedimento.IdProcedimento}" />
+
+        <label for="nomeProcedimento">Nome do Procedimento:</label>
+        <input type="text" id="nome" name="nomeProcedimento" th:value="${procedimento.nomeProcedimento}" required><br><br>
+
+        <label for="duracaoEmMinutos">Duracao em Minutos:</label>
+        <input type="text" id="duracaoEmMinutos" name="duracaoEmMinutos" th:value="${procedimento.duracaoEmMinutos}" required><br><br>
+
+        <label for="valor">Valor:</label>
+        <input type="valor" id="valor" name="valor" th:value="${procedimento.valor}" required><br><br>
+
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

@@ -42,7 +42,7 @@ public class ProcedimentoController {
 	public String carregarVisualiza(Model model) {
 		List<Procedimento> procedimentos = procedimentoService.getAll();
 		model.addAttribute("procedimentos", procedimentos);
-		return "visualizar-procedimentos";
+		return "page-visualizar-procedimentos";
 	}
 
 	@GetMapping(value = "/editar-procedimento")
@@ -63,7 +63,7 @@ public class ProcedimentoController {
 		}
 		List<Procedimento> procedimentos = procedimentoService.getAll();
 		model.addAttribute("procedimentos", procedimentos);
-		return "visualizar-procedimentos"; // Redirect sempre direciona para um GetMapping.
+		return "page-visualizar-procedimentos"; // Redirect sempre direciona para um GetMapping.
 
 	}
 
@@ -73,7 +73,7 @@ public class ProcedimentoController {
 		List<Procedimento> procedimentos = procedimentoService.getAll();
 		model.addAttribute("procedimentos", procedimentos);
 		model.addAttribute("idProcedimentoExcluir", idProcedimento);
-		return "visualizar-procedimentos";
+		return "page-visualizar-procedimentos";
 	}
 
 	@PostMapping(value = "/apagar-procedimento")
@@ -88,7 +88,7 @@ public class ProcedimentoController {
 		}
 		List<Procedimento> procedimentos = procedimentoService.getAll();
 		model.addAttribute("procedimentos", procedimentos);
-		return "visualizar-procedimentos";
+		return "page-visualizar-procedimentos";
 
 	}
 

@@ -9,7 +9,10 @@ import br.com.viniclin.entities.Especialista;
 import br.com.viniclin.entities.Procedimento;
 
 public class AgendamentoDTO { //essa classe tem a funcao de converter os valores "Strings"
-								// do front para o Back end e tbm converter valores diferentes
+	
+	// do front para o Back end e tbm converter valores diferentes
+	private String idAgendamento;
+	
 	private String idCliente;
 	private String idProcedimento;
 	private String idEspecialista;
@@ -18,6 +21,7 @@ public class AgendamentoDTO { //essa classe tem a funcao de converter os valores
 	
 	public Agendamento toEntity() {
 	Agendamento agendamento = new Agendamento();
+	agendamento.setIdAgendamento(this.idAgendamento);
 	
 	Cliente cliente = new Cliente();
 	cliente.setIdCliente(this.idCliente);
@@ -33,6 +37,7 @@ public class AgendamentoDTO { //essa classe tem a funcao de converter os valores
 	agendamento.setEspecialista(especialista);
 	agendamento.setData(LocalDate.parse(this.data));
 	agendamento.setHorario(LocalTime.parse(this.horario));
+	
 	
 	return agendamento;
 	}
@@ -67,7 +72,13 @@ public class AgendamentoDTO { //essa classe tem a funcao de converter os valores
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-	
+	public String getIdAgendamento() {
+		return idAgendamento;
+	}
+
+	public void setIdAgendamento(String idAgendamento) {
+		this.idAgendamento = idAgendamento;
+	}
 	
 
 }

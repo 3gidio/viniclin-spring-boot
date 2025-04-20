@@ -41,12 +41,12 @@ public class EspecialistaController {
 	public String carrregarVisualiza(Model model) {
 		List<Especialista> especialistas = especialistaService.getAll();
 		model.addAttribute("especialistas", especialistas);
-		return "visualizar-especialistas";
+		return "page-visualizar-especialistas";
 
 	}
 
 	@GetMapping(value = "/editar-especialista")
-	public String carreagarPaginaEditar(@RequestParam String idEspecialista, Model model) {
+	public String carregarPaginaEditar(@RequestParam String idEspecialista, Model model) {
 		Especialista especialista = especialistaService.getById(idEspecialista);
 		model.addAttribute("especialista", especialista);
 
@@ -56,6 +56,7 @@ public class EspecialistaController {
 
 	@PostMapping(value = "/editar-especialista")
 	public String editarEspecialista(Especialista especialista, Model model) {
+		
 		try {
 			especialistaService.editar(especialista);
 			model.addAttribute("sucesso", "Especialista editado com sucesso");
@@ -63,8 +64,8 @@ public class EspecialistaController {
 			model.addAttribute("erro", ex.getLocalizedMessage());
 		}
 		List<Especialista> especialistas = especialistaService.getAll();
-		model.addAttribute("especialistas", especialista);
-		return "visualizar-especialistas";
+		model.addAttribute("especialistas", especialistas);
+		return "page-visualizar-especialistas";
 	}
 
 	@GetMapping(value = "/apagar-especialista")
@@ -73,7 +74,7 @@ public class EspecialistaController {
 		List<Especialista> especialistas = especialistaService.getAll();
 		model.addAttribute("especialistas", especialistas);
 		model.addAttribute("idEspecialistaExcluir", idEspecialista);
-		return "visualizar-especialista";
+		return "page-visualizar-especialistas";
 	}
 
 	@PostMapping(value = "/apagar-especialista")
@@ -88,7 +89,7 @@ public class EspecialistaController {
 		}
 		List<Especialista> especialistas = especialistaService.getAll();
 		model.addAttribute("especialistas", especialistas);
-		return "visualizar-especialistas";
+		return "page-visualizar-especialistas";
 	}
 
 }

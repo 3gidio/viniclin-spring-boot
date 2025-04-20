@@ -19,6 +19,8 @@ public interface ClienteService {
 	public void apagar(String idCliente);
 
 	public List<Cliente> findAllByNome(String nome);
+
+	public Boolean clienteTemAgendamento(String idCliente);
 	
 	
 	

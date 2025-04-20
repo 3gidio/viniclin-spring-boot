@@ -41,7 +41,7 @@ public class ClienteController {
 	public String carregarVisualiza(Model model) {
 		List<Cliente> clientes = clienteService.getAll();
 		model.addAttribute("clientes", clientes);
-		return "visualizar-clientes";
+		return "page-visualizar-clientes";
 	}
 
 	@GetMapping(value = "/editar-cliente")
@@ -62,7 +62,7 @@ public class ClienteController {
 		}
 		List<Cliente> clientes = clienteService.getAll();
 		model.addAttribute("clientes", clientes);
-		return "visualizar-clientes"; // Redirect sempre direciona para um GetMapping.
+		return "page-visualizar-clientes"; // Redirect sempre direciona para um GetMapping.
 
 	}
 
@@ -72,11 +72,15 @@ public class ClienteController {
 		List<Cliente> clientes = clienteService.getAll();
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("idClienteExcluir", idCliente);
-		return "visualizar-clientes";
+		return "page-visualizar-clientes";
 	}
 
 	@PostMapping(value = "/apagar-cliente")
 	public String apagarCliente(String idCliente, Model model) {
+		Boolean temAgendamento = clienteService.clienteTemAgendamento(idCliente);
+		if (temAgendamento == true) {
+			model.addAttribute("atencao","Esse Cliente possui Agendamento Cadastrado!!" );
+		}
 		try {
 			clienteService.apagar(idCliente);
 			model.addAttribute("atencao", "CLiente Excluido com Sucesso!");
@@ -87,7 +91,7 @@ public class ClienteController {
 		}
 		List<Cliente> clientes = clienteService.getAll();
 		model.addAttribute("clientes", clientes);
-		return "visualizar-clientes";
+		return "page-visualizar-clientes";
 
 	}
 

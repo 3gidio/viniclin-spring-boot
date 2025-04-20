@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<script src="/js/script.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Procedimentos</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+	background-color: #f4f4f4;
+}
+
+h2 {
+	text-align: center;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+	margin-top: 20px;
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
+}
+
+th {
+	background: #007BFF;
+	color: white;
+}
+
+tr:nth-child(even) {
+	background: #f9f9f9;
+}
+</style>
+</head>
+<body>
+	<div id="container-erro" th:if="${atencao}">
+		<p th:text="${atencao}"></p>
+	</div>
+
+	<div id="confirmacao-excluir-container"
+		th:if="${confirmacaoExcluir != null}">
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert">
+			<div th:text="${confirmacaoExcluir}"></div>
+			<button type="button" onclick="confirmarExclusao()"
+				class="btn btn-danger btn-sim">Sim</button>
+			<a class="btn btn-secondary" th:href="@{/visualizar-especialistas}">Não</a>
+		</div>
+	</div>
+	<form id="form-excluir" action="apagar-procedimento" method="post"
+		hidden>
+		<input name="idProcedimento" th:value="${idProcedimentoExcluir}">
+	</form>
+
+	<h2>Lista de Procedimentos</h2>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Nome do Procedimento</th>
+				<th>Duracao em Minutos</th>
+				<th>Valor</th>
+				<th>Acoes</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="procedimento : ${procedimentos}">
+				<td th:text="${procedimento.nomeProcedimento}"></td>
+				<td th:text="${procedimento.duracaoEmMinutos}"></td>
+				<td th:text="${procedimento.valor}"></td>
+				
+				<td><a
+					th:href="@{'/editar-procedimento?idProcedimento='+${procedimento.idProcedimento}}">
+						<i class="ph ph-pencil"></i>
+				</a> <a th:href="@{'/apagar-procedimento?idProcedimento='+${procedimento.idProcedimento}}"
+					class="btn-apagar"> <i class="ph ph-trash"></i>
+				</a></td>
+			</tr>
+
+
+		</tbody>
+	</table>
+
+</body>
+</html>

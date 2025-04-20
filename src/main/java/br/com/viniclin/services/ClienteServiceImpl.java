@@ -1,11 +1,14 @@
 package br.com.viniclin.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.viniclin.entities.Agendamento;
 import br.com.viniclin.entities.Cliente;
+import br.com.viniclin.repositories.AgendamentoRepository;
 import br.com.viniclin.repositories.ClienteRepository;
 
 @Service
@@ -13,6 +16,8 @@ public class ClienteServiceImpl implements ClienteService { // No Service serao 
 	@Autowired
 	ClienteRepository clienteRepository; // AutoWired injecao de dependencia (comunicao da Service com o Repository sob
 											// o controle do Spring-Boot
+	@Autowired
+	AgendamentoRepository agendamentoRepository;
 
 	@Override
 	public void cadastrar(Cliente cliente) {
@@ -64,6 +69,12 @@ public class ClienteServiceImpl implements ClienteService { // No Service serao 
 	public List<Cliente> findAllByNome(String nome) {
 		List<Cliente> clientes = clienteRepository.findAllByNome(nome);
 		return clientes;
+	}
+
+	@Override
+	public Boolean clienteTemAgendamento(String idCliente) {
+		Optional<Agendamento> agendamentoOptional = agendamentoRepository.findByCliente_idCliente(idCliente);
+		return agendamentoOptional.isPresent() ;
 	}
 
 }
